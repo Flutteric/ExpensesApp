@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final List<Transaction> transactions = [
     Transaction(
-        id: 't1', title: 'MacBook Pro', amount: 1299.99, date: DateTime.now()),
+        id: 't1', title: 'Pixel 5G', amount: 399.99, date: DateTime.now()),
     Transaction(id: 't2', title: 'iPad', amount: 699.99, date: DateTime.now()),
   ];
 
@@ -27,8 +27,8 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -44,12 +44,35 @@ class MyHomePage extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Container(
-                    child: Text(tx.amount.toString()),
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple, width: 2)),
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      tx.amount.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.purple),
+                    ),
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(tx.title),
-                      Text(tx.date.toString())
+                      Text(
+                        tx.title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.blue),
+                      ),
+                      Text(
+                        tx.date.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12,
+                            color: Colors.grey),
+                      )
                     ],
                   )
                 ],
