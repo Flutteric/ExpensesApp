@@ -21,6 +21,9 @@ class MyHomePage extends StatelessWidget {
     Transaction(id: 't2', title: 'iPad', amount: 699.99, date: DateTime.now()),
   ];
 
+  String titleInput;
+  String amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +51,15 @@ class MyHomePage extends StatelessWidget {
                 children: <Widget>[
                   TextField(
                     decoration: InputDecoration(labelText: 'Title'),
+                    onChanged: (value) {
+                      titleInput = value;
+                    },
                   ),
                   TextField(
                     decoration: InputDecoration(labelText: 'Amount'),
+                    onChanged: (value) {
+                      amountInput = value;
+                    },
                   ),
                   FlatButton(
                     onPressed: () {},
