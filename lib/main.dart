@@ -41,6 +41,7 @@ class MyHomePage extends StatelessWidget {
           Column(
               children: transactions.map((tx) {
             return Card(
+              elevation: 5,
               child: Row(
                 children: <Widget>[
                   Container(
@@ -49,7 +50,7 @@ class MyHomePage extends StatelessWidget {
                         border: Border.all(color: Colors.purple, width: 2)),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      tx.amount.toString(),
+                      '\$${tx.amount}',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
