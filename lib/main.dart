@@ -1,9 +1,9 @@
-import './widgets/chart.dart';
-
-import './widgets/transaction_list.dart';
-import './widgets/new_transaction.dart';
-import './models/transaction.dart';
 import 'package:flutter/material.dart';
+
+import './widgets/new_transaction.dart';
+import './widgets/transaction_list.dart';
+import './widgets/chart.dart';
+import './models/transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,21 +13,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.orange,
-          accentColor: Colors.green,
+          primarySwatch: Colors.purple,
+          accentColor: Colors.amber,
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
-              title: TextStyle(
+                title: TextStyle(
                   fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  fontWeight: FontWeight.bold),
-              button: TextStyle(color: Colors.white)),
+                ),
+                button: TextStyle(color: Colors.white),
+              ),
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
-                title: TextStyle(
+                  title: TextStyle(
                     fontFamily: 'OpenSans',
                     fontSize: 20,
-                    fontWeight: FontWeight.bold)),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
           )),
       home: MyHomePage(),
     );
@@ -58,16 +62,21 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   List<Transaction> get _recentTransactions {
-    return _userTransactions.where((element) {
-      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,
-      date: DateTime.now(),
+      date: chosenDate,
       id: DateTime.now().toString(),
     );
 
@@ -95,7 +104,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(
           'Personal Expenses',
-          style: TextStyle(fontFamily: 'Open Sans'),
         ),
         actions: <Widget>[
           IconButton(
